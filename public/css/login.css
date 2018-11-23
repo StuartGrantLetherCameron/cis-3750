@@ -35,6 +35,12 @@ body#LoginForm{
     padding: 50px 70px 70px 71px;
 }
 
+#login-button{
+    min-height: 35px;
+    min-width: 250px;
+
+}
+
 .login-form .form-group {
     margin-bottom:10px;
 }
@@ -55,7 +61,8 @@ body#LoginForm{
     padding: 0;
 }
 .forgot {
-    text-align: left; margin-bottom:30px;
+    text-align: left;
+    margin-bottom:30px;
 }
 .botto-text {
     color: #ffffff;
