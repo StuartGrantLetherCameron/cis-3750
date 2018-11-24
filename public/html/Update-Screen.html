@@ -31,13 +31,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Update Screen</h1>
-                    <p>
-                        pink team
-                        pink team
-                        pink team
-                        pink team
-                        pink team</p>
-
+                    <div><p id="select-screen-txt">select screen</p>  <select id="screen-options"></select></div>
                 </div>
             </div>
         </div>
@@ -46,6 +40,19 @@
 </div>
 
 <script>
+    fetch("../files/screens.json").then(function (value) {
+        return value.json();
+    }).then(function (value) {
+        var screens_list = value["screens"];
+        var select_screen = document.getElementById("screen-options");
+
+        for(var i = 0 ; i < (screens_list.length -1) ; i++){
+            var opption = document.createElement("option")
+            opption.text = screens_list[i]
+            select_screen.add(opption);
+        }
+    });
+
     $("#menu-toggle").click( function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("menuDisplayed");
