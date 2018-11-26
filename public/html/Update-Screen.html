@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/update-screen.css">
 </head>
 <body>
 
@@ -31,7 +32,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Update Screen</h1>
-                    <div><p id="select-screen-txt">select screen</p>  <select id="screen-options"></select></div>
+                    <div id="select-scree-div" style="display: inline-block;">
+                        <span id="select-screen-txt">Select screen:  </span>
+                        <select id="screen-options"></select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,15 +44,24 @@
 </div>
 
 <script>
+
     fetch("../files/screens.json").then(function (value) {
         return value.json();
     }).then(function (value) {
-        var screens_list = value["screens"];
+        console.log(value);
+        var screen_list = [];
+        screen_list.push("hello")
+        for(var i = 0 ; i < value.length ; i++){
+            console.log(value[i]["name"]);
+            screen_list.push(value[i]["name"] + " group " +  value[i]["group"] +" floor " + value[i]["floor"]);
+        }
+        console.log(screen_list);
+
         var select_screen = document.getElementById("screen-options");
 
-        for(var i = 0 ; i < (screens_list.length -1) ; i++){
-            var opption = document.createElement("option")
-            opption.text = screens_list[i]
+        for(var i = 1 ; i < screen_list.length ; i++){
+            var opption = document.createElement("option");
+            opption.text = screen_list[i];
             select_screen.add(opption);
         }
     });

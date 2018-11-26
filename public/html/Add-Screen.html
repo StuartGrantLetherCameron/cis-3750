@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/add-screen.css">
 </head>
 <body>
 
@@ -31,12 +32,45 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Add Screen</h1>
-                    <p>
-                        pink team
-                        pink team
-                        pink team
-                        pink team
-                        pink team</p>
+
+                    <div id="info-div">
+                        <div id="padding-1"></div>
+
+                        <div id="screen-name-div" style="display: inline-block;">
+                            <span id="screen-name-text">     Screen Name: </span>
+                            <input id="screen-name-input" placeholder="UC main floor">
+                        </div>
+
+                        <div id="padding-2"></div>
+
+                        <div id="group-num-div" style="display: inline-block;">
+                            <span id="group-text">     Group: </span>
+                            <select id="group-num-select">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+
+                        <div id="padding-3"></div>
+
+                        <div id="floor-num-div" style="display: inline-block;">
+                            <span id="floor-text">     Floor: </span>
+                            <select id="floor-num-select">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="padding-4"></div>
+
+                    <div id="btn-div">
+                        <button class="btn btn-success" id="create">Create</button>
+                    </div>
+
+
 
                 </div>
             </div>
@@ -50,6 +84,25 @@
         e.preventDefault();
         $("#wrapper").toggleClass("menuDisplayed");
     });
+
+
+    $("#create").click( function (e) {
+        fetch("../files/screens.json").then(function (value) {
+            return value.json();
+        }).then(function (value) {
+            console.log(value)
+            var screen_name = document.getElementById("screen-name-input").value;
+            var group_num = document.getElementById("group-num-select").value;
+            var floor_num = document.getElementById("floor-num-select").value;
+            var json = "{\"name\":" + "\"" + screen_name + "\"" + "," + "\"group\":" + "\"" + group_num + "\"" + "," + "\"floor\":" + "\"" + floor_num + "\"}";
+            console.log(json);
+            value.push(JSON.parse(json));
+            console.log(value)
+        });
+
+    });
+
+
 </script>
 
 </body>

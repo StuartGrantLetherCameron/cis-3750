@@ -1,1 +1,2 @@
-{"screens": ["Thorn Floor 1", "Science complex Floor 1", "Science complex Floor 1"]}
+[{"name": "Thron", "group": "1", "floor": "1"},
+  {"name": "UC", "group": "2", "floor": "1"}]
