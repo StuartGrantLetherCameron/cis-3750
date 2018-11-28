@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <script data-main="scripts/main.js" src="scripts/require.js"></script>
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/add-screen.css">
 </head>
@@ -80,11 +82,17 @@
 </div>
 
 <script>
+    "use strict"
     $("#menu-toggle").click( function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("menuDisplayed");
     });
 
+    const ffi = require('ffi');
+
+    var helper = ffi.Library("../files/lib.so",{
+        'work': ['int']
+    });
 
     $("#create").click( function (e) {
         fetch("../files/screens.json").then(function (value) {
@@ -97,10 +105,14 @@
             var json = "{\"name\":" + "\"" + screen_name + "\"" + "," + "\"group\":" + "\"" + group_num + "\"" + "," + "\"floor\":" + "\"" + floor_num + "\"}";
             console.log(json);
             value.push(JSON.parse(json));
-            console.log(value)
+            console.log(value);
+
+            var test = helper.work(1);
+            console.log(test)
         });
 
     });
+
 
 
 </script>

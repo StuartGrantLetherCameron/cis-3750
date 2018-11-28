@@ -51,4 +51,11 @@
     margin: auto;
 }
 
+#padding-1{
+    padding-top: 15px;
+}
 
+#wrong_password{
+    color: darkred;
+    visibility: hidden;
+}
