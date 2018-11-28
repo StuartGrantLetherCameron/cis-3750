@@ -1,0 +1,57 @@
+#main-info{
+    padding-left: 45px;
+}
+
+#all-group-txt{
+    font-size: 20px;
+}
+
+#select-group-txt{
+    font-size: 20px;
+}
+
+#notification-txt{
+    font-size: 20px;
+}
+
+#color-txt{
+    font-size: 20px;
+}
+
+#duration-txt{
+    font-size: 20px;
+}
+
+#padding-1{
+    padding-top: 10px;
+}
+
+#padding-2{
+    padding-top: 10px;
+}
+
+#padding-3{
+    padding-top: 10px;
+}
+
+#padding-4{
+    padding-top: 10px;
+}
+
+#padding-5{
+    padding-top: 10px;
+}
+
+#all-group-check{
+    min-width: 18px;
+    min-height: 18px;
+}
+
+#send-div{
+    padding-left: 175px;
+}
+
+#notification-input{
+    min-height: 250px;
+    min-width: 450px;
+}
