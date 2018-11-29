@@ -10,6 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/sidebar.css">
     <script type="text/javascript" src="../files/screens.json"></script>
+    <link rel="stylesheet" href="../css/home.css"
 </head>
 <body>
 
@@ -20,7 +21,7 @@
         <h1 id="sidebar-title">Menu</h1>
         <a href="#" class="btn btn-success" id="menu-toggle">X</a>
         <ul class="sidebar-nav" id="sidebar-nav">
-            <li><a href="home.html">Home</a></li>
+            <li><a href="home-screen.html">Home</a></li>
             <li><a href="Add-Screen.html">Add Screen</a></li>
             <li><a href="Creat-Notification.html">Create Notification</a></li>
             <li><a href="Update-Screen.html">Update Screen</a></li>
@@ -31,13 +32,25 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Home</h1>
-                    <p>
-                        pink team
-                        pink team
-                        pink team
-                        pink team
-                        pink team</p>
+
+                    <div id="home-div">
+                        <h1>Home</h1>
+
+                        <div id="padding-1"></div>
+
+                        <div id="available-screens-div">
+                            <h3>Available Screens</h3>
+                            <table id="screens-table">
+                                <tr id="table-head">
+                                    <th><font color="white">Name</th>
+                                    <th><font color="white">Floor</th>
+                                    <th><font color="white">Group</th>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                    </div>
 
                 </div>
             </div>
@@ -50,6 +63,26 @@
     $("#menu-toggle").click( function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("menuDisplayed");
+    });
+
+    fetch("../files/screens.json").then(function (value) {
+        return value.json();
+    }).then(function (value) {
+
+        var table = document.getElementById("screens-table");
+
+        for (var i = 0 ; i < value.length; i++){
+            console.log("test");
+            var row = table.insertRow(i+1);
+            var col1 = row.insertCell(0);
+            var col2 = row.insertCell(1);
+            var col3 = row.insertCell(2);
+
+
+            col1.innerHTML = '<a href="Update-Screen.html">' + value[i]["name"] + '</a>'
+            col2.innerHTML = value[i]["floor"];
+            col3.innerHTML = value[i]["group"];
+        }
     });
 </script>
 
