@@ -32,36 +32,59 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Update Screen</h1>
-                    <div id="select-scree-div" style="display: inline-block;">
-                        <span id="select-screen-txt">Select screen:  </span>
-                        <select id="screen-options"></select>
+                    <div id="info-div">
+                        <div id="padding"></div>
+                        <div id="select-scree-div" style="display: inline-block;">
+                            <span id="select-screen-txt">Select screen:  </span>
+                            <select id="screen-options"></select>
+                        </div>
+
+                        <div id="padding-1"></div>
+
+                        <div id="display Div">
+                            <input type="file" name="pic" accept="image/*" id="pic-find-btn">
+                        </div>
+
+                        <div id="padding-2"></div>
+
+                        <div id="top-txt-div" style="display: inline-block;">
+                            <span id="top-txt-tx">Top Text: </span>
+                            <input id="top-txt-input" type="text">
+                        </div>
+
+                        <div id="padding-3"></div>
+
+                        <div id="bottom-txt-div" style="display: inline-block;">
+                            <span id="bottom-txt-txt">Bottom Text: </span>
+                            <input id="bottom-txt-input" type="text">
+                        </div>
+
+                        <div id="padding-4"></div>
+
+                        <div id="btn-div">
+                            <input type="button" class="btn btn-success" value="Preview" onclick="preview()" id="preview-btn">
+                            <input type="button" class="btn btn-success" value="Save">
+                        </div>
+                        <div id="false">
+                            <span id="false-text" style="visibility: hidden;">Please Select a File</span>
+                        </div>
+                        <div id="padding-5"></div>
+
+                        <div id="preview-div">
+                            <div id="image-div">
+                                <div id="top-text-div">
+                                    <p id="top-text">
+                                </div>
+                                <div id="img">
+                                    <img src="" id="test-pic" style="visibility: hidden;">
+                                </div>
+                                <div>
+                                    <p id="bottom-text">
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div id="padding-1"></div>
-
-                    <div id="display Div">
-                        NA
-                    </div>
-
-                    <div id="padding-2"></div>
-
-                    <div id="top-txt-div" style="display: inline-block;">
-                        <span id="top-txt-tx">Top Text: </span>
-                        <input id="top-txt-input" type="text">
-                    </div>
-
-                    <div id="padding-3"></div>
-
-                    <div id="bottom-txt-div" style="display: inline-block;">
-                        <span id="bottom-txt-txt">Bottom Text: </span>
-                        <input id="bottom-txt-input" type="text">
-                    </div>
-
-                    <div id="padding-4"></div>
-
-                    <div id="btn-div">
-                        <input type="button" class="btn btn-success" value="Save">
-                    </div>
                 </div>
             </div>
         </div>
@@ -96,6 +119,24 @@
         e.preventDefault();
         $("#wrapper").toggleClass("menuDisplayed");
     });
+
+    function preview (){
+        var picture = document.getElementById("pic-find-btn").value;
+        if (picture.length == 0){
+            document.getElementById("false-text").style.visibility = "visible";
+            return;
+        }else{
+            document.getElementById("false-text").style.visibility = "hidden";
+        }
+        var top = document.getElementById("top-txt-input").value;
+        var bottom = document.getElementById("bottom-txt-input").value;
+        var picture_url = picture.substring(12, picture.length);
+
+        document.getElementById("top-text").innerHTML = top;
+        document.getElementById("test-pic").style.visibility = "visible";
+        document.getElementById("test-pic").src = "../pictures/" + picture_url;
+        document.getElementById("bottom-text").innerHTML = bottom;
+    }
 </script>
 
 </body>
